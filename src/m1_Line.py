@@ -539,7 +539,7 @@ class Line(object):
         y2 = self.end.y + other_line.end.y
         newline = Line(Point(x1, y1), Point(x2, y2))
         return newline
-    
+
     def line_minus(self, other_line):
         """
         What comes in:
@@ -565,7 +565,7 @@ class Line(object):
           :rtype: Line:
         """
         # ---------------------------------------------------------------------
-        # TODO: 10.
+        # done: 10.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -573,6 +573,12 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
+        mx1 = self.start.x - other_line.start.x
+        my1 = self.start.y - other_line.start.y
+        mx2 = self.end.x - other_line.end.x
+        my2 = self.end.y - other_line.end.y
+        newestline = Line(Point(mx1, my1), Point(mx2, my2))
+        return newestline
 
     def midpoint(self):
         """
