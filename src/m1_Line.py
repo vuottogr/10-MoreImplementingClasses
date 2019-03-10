@@ -230,6 +230,8 @@ class Line(object):
         self.start = start.clone()
         self.end = end.clone()
         self.numclones = 0
+        self.ogstart = start.clone()
+        self.ogend = end.clone()
     def __repr__(self):
         """
         What comes in:
@@ -598,7 +600,7 @@ class Line(object):
           :rtype: Point
         """
         # ---------------------------------------------------------------------
-        # TODO: 11.
+        # done: 11.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -606,6 +608,12 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
+        dx = (self.start.x - self.end.x) / 2
+        dy = (self.start.y - self.end.y) / 2
+        mx = self.start.x - dx
+        my = self.start.y - dy
+        midpoint = Point(mx, my)
+        return midpoint
 
     def is_parallel(self, line2):
         """
@@ -635,7 +643,7 @@ class Line(object):
           :rtype: bool
         """
         # ---------------------------------------------------------------------
-        # TODO: 12.
+        # done: 12.
         #   a. READ the above specification, including the Example.
         #        ** ASK QUESTIONS AS NEEDED. **
         #        ** Be sure you understand it, ESPECIALLY the Example.
@@ -670,6 +678,24 @@ class Line(object):
         # floating-point errors while distinguishing numbers that really
         # are different from each other.
         #######################################################################
+        dx = self.start.x - self.end.x
+        dy = self.start.y - self.end.y
+        if dx == 0:
+            s1 = math.inf
+        else:
+            s1 = (dy / dx)
+        dx2 = line2.start.x - line2.end.x
+        dy2 = line2.start.y - line2.end.y
+        if dx2 == 0:
+            s2 = math.inf
+        else:
+            s2 = (dy2/dx2)
+        if round(s1, 12) == round(s2, 12):
+            return True
+        else:
+            return False
+
+
 
     def reset(self):
         """
@@ -709,7 +735,8 @@ class Line(object):
         #        The tests are already written (below).
         #        They include the Example in the above doc-string.
         # ---------------------------------------------------------------------
-
+        self.start = self.ogstart
+        self.end = self.ogend
 
 ###############################################################################
 # The TEST functions for the  Line  class begin here.
