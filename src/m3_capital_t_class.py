@@ -282,13 +282,13 @@ class CapitalT(object):
         # ---------------------------------------------------------------------
         self.h_rect.corner_1.x = self.h_rect.corner_1.x + dx
         self.v_rect.corner_1.x = self.v_rect.corner_1.x + dx
-        self.h_rect.corner_1.y = self.h_rect.corner_1.y + dx
-        self.v_rect.corner_1.y = self.v_rect.corner_1.y + dx
+        self.h_rect.corner_1.y = self.h_rect.corner_1.y + dy
+        self.v_rect.corner_1.y = self.v_rect.corner_1.y + dy
 
         self.h_rect.corner_2.x = self.h_rect.corner_2.x + dx
         self.v_rect.corner_2.x = self.v_rect.corner_2.x + dx
-        self.h_rect.corner_2.y = self.h_rect.corner_2.y + dx
-        self.v_rect.corner_2.y = self.v_rect.corner_2.y + dx
+        self.h_rect.corner_2.y = self.h_rect.corner_2.y + dy
+        self.v_rect.corner_2.y = self.v_rect.corner_2.y + dy
 
     def clone(self):
         """
@@ -324,7 +324,7 @@ class CapitalT(object):
         # variables beyond  h_rect  and  v_rect, at any point of this exercise.
         #######################################################################
         centerx = (self.h_rect.corner_1.x + self.h_rect.corner_2.x) / 2
-        centery = (self.h_rect.corner_1.y - self.h_rect.corner_2.y) / 2
+        centery = (self.h_rect.corner_1.y + self.h_rect.corner_2.y) / 2
         intcenter = rg.Point(centerx, centery)
         t = CapitalT(intcenter, self.h_rect.corner_2.x - self.h_rect.corner_1.x,
                      self.v_rect.corner_2.y - self.v_rect.corner_1.y, self.v_rect.corner_2.x - self.v_rect.corner_1.x)
